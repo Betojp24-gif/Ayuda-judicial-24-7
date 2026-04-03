@@ -3,196 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DefensaPenal 24/7 - Asistencia en Trámites Judiciales</title>
+    <title>DefensaPenal 24/7 - Asistencia Jurídica</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
-        .form-card { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05); }
-        .input-field { transition: all 0.2s ease-in-out; border: 1px solid #e2e8f0; }
-        .input-field:focus { border-color: #1d4ed8; box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.1); outline: none; }
-        .btn-whatsapp { background: #25d366; transition: all 0.2s; }
-        .btn-whatsapp:hover:not(:disabled) { background: #128c7e; transform: translateY(-2px); }
-        .btn-whatsapp:disabled { background: #cbd5e1; cursor: not-allowed; }
-        .price-badge { background: #dcfce7; color: #166534; font-weight: 800; padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f1f5f9; color: #1e293b; }
+        .glass-card { background: white; border-radius: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05); }
+        .input-label { font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: block; margin-left: 4px; }
+        .input-field { width: 100%; padding: 10px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; font-size: 14px; outline: none; transition: all 0.2s; }
+        .input-field:focus { border-color: #2563eb; background: white; ring: 2px ring-blue-100; }
+        .btn-action { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-action:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .progresividad-alerta { border-left: 4px solid #f59e0b; background: #fffbeb; padding: 12px; border-radius: 8px; font-size: 11px; color: #92400e; margin-bottom: 20px; }
     </style>
 </head>
-<body class="text-slate-800">
+<body class="antialiased">
 
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 py-4 px-6 sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto flex justify-between items-center">
+    <!-- Header -->
+    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 py-3 px-6 sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="bg-blue-700 p-2 rounded-lg">
-                    <i class="fa-solid fa-file-signature text-white"></i>
+                <div class="bg-blue-700 p-2 rounded-lg text-white">
+                    <i class="fa-solid fa-scale-unbalanced"></i>
                 </div>
-                <span class="text-xl font-bold tracking-tight">DefensaPenal <span class="text-blue-700">24/7</span></span>
+                <span class="text-xl font-extrabold tracking-tighter">DefensaPenal <span class="text-blue-700">24/7</span></span>
             </div>
-            <div class="hidden md:block text-right">
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Asistencia Técnica Administrativa</span>
-            </div>
+            <button onclick="openModal('modalLey')" class="text-[10px] font-black bg-blue-50 text-blue-700 px-3 py-2 rounded-full uppercase hover:bg-blue-100">Info Ley 24.660</button>
         </div>
     </nav>
 
-    <section class="bg-blue-50 border-b border-blue-100 py-6 px-6">
-        <div class="max-w-3xl mx-auto">
-            <h3 class="text-blue-900 font-bold text-sm mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-star text-yellow-500"></i> SERVICIOS DISPONIBLES
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div class="bg-white p-3 rounded-xl border border-blue-200 flex justify-between items-center shadow-sm">
-                    <span class="text-xs font-semibold text-slate-600">Redacción de Escritos</span>
-                    <span class="price-badge">Consultar</span>
-                </div>
-                <div class="bg-white p-3 rounded-xl border border-blue-200 flex justify-between items-center shadow-sm">
-                    <span class="text-xs font-semibold text-slate-600">Seguimiento de Legajo</span>
-                    <span class="price-badge">Consultar</span>
+    <main class="max-w-2xl mx-auto px-4 py-8">
+        
+        <!-- Notificación de Progresividad -->
+        <div class="progresividad-alerta">
+            <div class="flex gap-3">
+                <i class="fa-solid fa-circle-exclamation mt-1"></i>
+                <div>
+                    <p class="font-black uppercase tracking-tight mb-1">Aviso sobre Progresividad de Pena</p>
+                    <p class="leading-tight">Si el interno no cuenta con una actualización de régimen, es <b>fundamental</b> estar preparado y solicitarla cada 6 meses. Sin progresividad activa, el Juzgado difícilmente otorgará beneficios de libertad.</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="bg-slate-900 text-white py-10 px-6">
-        <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-3xl font-extrabold mb-3 tracking-tight">Gestión de Trámites Judiciales</h1>
-            <p class="text-slate-400 text-sm md:text-base">Complete el formulario para iniciar la confección de su escrito o consulta técnica.</p>
-        </div>
-    </section>
-
-    <main class="max-w-3xl mx-auto -mt-8 px-4 pb-20">
-        <div class="bg-white rounded-3xl p-6 md:p-10 form-card border border-slate-100">
-            
-            <form id="solicitudForm" class="space-y-8">
+        <div class="glass-card p-6 md:p-8">
+            <form id="formPenal" class="space-y-6">
                 
-                <section>
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</span>
-                        <h2 class="text-lg font-bold text-slate-800">Identificación del Interno</h2>
-                    </div>
+                <!-- Sección 1: Datos Personales -->
+                <div class="space-y-4">
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-1">01. Identificación del Interno</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="col-span-full">
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Nombre y Apellido</label>
-                            <input type="text" id="nombre" required placeholder="Nombre completo" class="w-full p-4 bg-slate-50 rounded-2xl input-field font-semibold uppercase text-sm">
+                            <label class="input-label">Nombre y Apellido Completo</label>
+                            <input type="text" id="nombre" class="input-field font-semibold uppercase" required>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">DNI / Documento</label>
-                            <input type="number" id="dni" required placeholder="Sin puntos" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
+                            <label class="input-label">Número de DNI</label>
+                            <input type="number" id="dni" class="input-field" required>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Unidad (UP)</label>
-                            <input type="text" id="unidad" required placeholder="Ej: UP 21" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Fecha Detención</label>
-                            <input type="date" id="fecha_detencion" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Condena</label>
-                            <input type="text" id="condena" placeholder="Ej: 4 años" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
+                            <label class="input-label">Unidad de Detención (UP)</label>
+                            <input type="text" id="unidad" class="input-field" placeholder="Ej: UP 23 Florencio Varela">
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <section>
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="bg-blue-100 text-blue-700 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</span>
-                        <h2 class="text-lg font-bold text-slate-800">Datos de la Causa</h2>
-                    </div>
+                <!-- Sección 2: Jurisdicción -->
+                <div class="space-y-4">
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-1">02. Jurisdicción Judicial</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="col-span-full">
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Departamento Judicial</label>
-                            <select id="departamento" required class="w-full p-4 bg-slate-50 rounded-2xl input-field font-semibold text-sm">
-                                <option value="" disabled selected>Seleccione Jurisdicción</option>
-                                <option value="San Isidro">San Isidro</option>
-                                <option value="Morón">Morón</option>
-                                <option value="La Matanza">La Matanza</option>
+                        <div>
+                            <label class="input-label">Departamento Judicial</label>
+                            <select id="depto" class="input-field font-bold text-blue-900">
+                                <option value="">Seleccione Departamento...</option>
                                 <option value="Lomas de Zamora">Lomas de Zamora</option>
                                 <option value="San Martín">San Martín</option>
-                                <option value="Quilmes">Quilmes</option>
+                                <option value="San Isidro">San Isidro</option>
                                 <option value="La Plata">La Plata</option>
-                                <option value="Justicia Federal">Justicia Federal</option>
-                                <option value="Otra">Otra</option>
+                                <option value="Quilmes">Quilmes</option>
+                                <option value="Morón">Morón</option>
+                                <option value="La Matanza">La Matanza</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Azul">Azul</option>
+                                <option value="Bahía Blanca">Bahía Blanca</option>
+                                <option value="San Nicolás">San Nicolás</option>
+                                <option value="Junín">Junín</option>
+                                <option value="Mar del Plata">Mar del Plata</option>
+                                <option value="Dolores">Dolores</option>
+                                <option value="Trenque Lauquen">Trenque Lauquen</option>
+                                <option value="Necochea">Necochea</option>
+                                <option value="Pergamino">Pergamino</option>
+                                <option value="Zárate Campana">Zárate - Campana</option>
+                                <option value="Moreno General Rodriguez">Moreno - Gral. Rodríguez</option>
+                                <option value="Avellaneda Lanús">Avellaneda - Lanús</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Juzgado Asignado</label>
-                            <input type="text" id="juzgado" required placeholder="Ej: Ejecución 3 o En Proceso" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">N° Legajo / Causa</label>
-                            <input type="text" id="causa" required placeholder="Expediente" class="w-full p-4 bg-slate-50 rounded-2xl input-field text-sm">
-                        </div>
-                        <div class="col-span-full">
-                            <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-widest">Tipo de Trámite</label>
-                            <select id="beneficio" required class="w-full p-4 bg-slate-50 rounded-2xl input-field font-bold text-blue-700 text-sm">
-                                <option value="Estímulo Educativo">Estímulo Educativo (Art. 140)</option>
-                                <option value="Libertad Asistida/Condicional">Libertad Asistida / Condicional</option>
-                                <option value="Salidas Transitorias">Salidas Transitorias</option>
-                                <option value="Pronto Despacho">Pronto Despacho</option>
-                                <option value="Atención Médica">Atención Médica</option>
-                                <option value="Cambio de Letrado">Baja de Abogado / Nuevo Letrado</option>
-                                <option value="Consulta General">Consulta de Estado de Causa</option>
-                            </select>
+                            <label class="input-label">Juzgado de Ejecución N° / Penal</label>
+                            <input type="text" id="juzgado_n" class="input-field" placeholder="Ej: 1, 2, 3 o 4">
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <section class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="text-[10px] text-slate-500 leading-tight mb-4 space-y-2">
-                        <p>**DESCARGO DE RESPONSABILIDAD:** Esta web ofrece un servicio de asistencia técnica administrativa y redacción de escritos particulares. **No somos un estudio jurídico.** La gestión realizada no garantiza resultados judiciales, los cuales dependen del juez interviniente. Los datos enviados son responsabilidad del solicitante.</p>
+                <!-- Sección 3: Situación de Condena -->
+                <div class="space-y-4">
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-1">03. Estado de Condena</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="input-label">Fecha de Detención</label>
+                            <input type="date" id="fecha_detencion" class="input-field">
+                        </div>
+                        <div>
+                            <label class="input-label">Condena Total Establecida</label>
+                            <input type="text" id="condena_total" class="input-field" placeholder="Ej: 8 años y 6 meses">
+                        </div>
                     </div>
-                    <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" id="acepto_terminos" class="mt-1 w-4 h-4 rounded border-slate-300 text-blue-700" onchange="toggleButton()">
-                        <span class="text-xs text-slate-600 font-bold select-none">Acepto los términos y el servicio de gestión.</span>
+                </div>
+
+                <!-- Sección 4: Escrito -->
+                <div class="space-y-4">
+                    <h2 class="text-[10px] font-black text-slate-400 uppercase tracking-widest border-b pb-1">04. Escrito Judicial a Solicitar</h2>
+                    <div class="grid grid-cols-1 gap-2">
+                        
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="servicio" value="Cambio de Régimen" class="hidden peer" checked>
+                            <div class="p-4 border border-slate-200 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all">
+                                <span class="font-bold text-sm">Cambio de Régimen <span class="bg-blue-100 text-blue-700 text-[9px] px-2 py-0.5 rounded ml-1 uppercase">Cada 6 meses</span></span>
+                                <p class="text-[10px] text-slate-500 mt-1 italic">Habilita el ascenso en la progresividad penal.</p>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="servicio" value="Estímulo Educativo" class="hidden peer">
+                            <div class="p-4 border border-slate-200 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all">
+                                <span class="font-bold text-sm">Estímulo Educativo (Art. 140)</span>
+                                <p class="text-[10px] text-slate-500 mt-1 italic">Reducción de plazos por estudios y capacitación.</p>
+                            </div>
+                        </label>
+
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="servicio" value="Traslado / Salud / Otros" class="hidden peer">
+                            <div class="p-4 border border-slate-200 rounded-xl peer-checked:border-blue-600 peer-checked:bg-blue-50 transition-all">
+                                <span class="font-bold text-sm">Traslado o Pronto Despacho</span>
+                                <p class="text-[10px] text-slate-500 mt-1 italic">Urgencias y reclamos por falta de respuesta judicial.</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Observaciones -->
+                <div class="space-y-4">
+                    <label class="input-label">Detalles / Observaciones Adicionales</label>
+                    <textarea id="obs" rows="2" class="input-field resize-none" placeholder="Motivos especiales, conducta, etc."></textarea>
+                </div>
+
+                <!-- Notificación y Firma -->
+                <div class="bg-blue-800 text-white p-5 rounded-2xl shadow-xl shadow-blue-200">
+                    <p class="text-[10px] font-black uppercase opacity-75 mb-1 tracking-wider">Gestión Judicial Administrativa</p>
+                    <p class="text-[11px] mb-4 leading-tight">Al enviar la solicitud, se redacta el escrito técnico para el <b>Juzgado de Ejecución</b> y la <b>Defensoría Oficial</b>. La plataforma gestiona la intervención ante las autoridades.</p>
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" id="acepto" class="w-5 h-5 rounded border-transparent text-slate-900 focus:ring-0" onchange="check()">
+                        <span class="text-[10px] font-black uppercase tracking-tight">Confirmo que el costo de esta gestión es de $10.000</span>
                     </label>
-                </section>
+                </div>
 
-                <button type="button" id="btn_enviar" disabled onclick="enviarWhatsApp()" class="w-full btn-whatsapp text-white p-5 rounded-2xl font-extrabold text-lg shadow-xl flex items-center justify-center gap-3">
-                    <i class="fa-brands fa-whatsapp text-2xl"></i>
-                    SOLICITAR GESTIÓN
+                <button type="button" id="btn" disabled onclick="enviar()" class="w-full bg-emerald-500 btn-action text-white p-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 disabled:opacity-50">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Solicitar Escrito Judicial
                 </button>
 
+                <div class="text-center pt-4 border-t border-slate-200">
+                    <p class="text-[9px] text-slate-400 font-bold uppercase mb-2 tracking-tighter italic">¿Desea una defensa penal personalizada?</p>
+                    <a href="https://wa.me/5491162530988?text=Consulta+Abogado+Particular" class="text-[10px] font-extrabold text-blue-700 hover:underline uppercase">
+                        Asistencia de Abogado Particular <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
             </form>
         </div>
     </main>
 
-    <footer class="py-10 text-center text-slate-400 text-[10px] px-6 uppercase tracking-widest font-bold">
-        <p>© 2024 DefensaPenal 24/7 - Servicios de Asistencia Técnica</p>
-    </footer>
+    <!-- Modal Informativo -->
+    <div id="modalLey" class="hidden fixed inset-0 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm modal">
+        <div class="bg-white w-full max-w-sm rounded-3xl p-8 shadow-2xl overflow-y-auto max-h-[85vh]">
+            <h3 class="text-lg font-black text-blue-800 mb-4 border-b pb-2 uppercase tracking-tighter">Guía Ley 24.660</h3>
+            <div class="space-y-4 text-[11px] text-slate-600 leading-relaxed">
+                <div>
+                    <p class="font-bold text-slate-900 uppercase text-[9px] mb-1">📅 Revisión Semestral</p>
+                    <p>El régimen se debe revisar cada <b>6 meses</b>. Si no hay progresividad, el Juzgado no otorgará libertades anticipadas.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-slate-900 uppercase text-[9px] mb-1">🎓 Estímulo Educativo</p>
+                    <p>Estudiar permite adelantar meses para beneficios. Es un derecho constitucional de la persona privada de su libertad.</p>
+                </div>
+                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 font-bold text-blue-800 italic">
+                    "Estar preparado con la progresividad al día es la base fundamental para acceder a los beneficios."
+                </div>
+            </div>
+            <button onclick="closeModal('modalLey')" class="w-full mt-6 bg-slate-900 text-white py-4 rounded-2xl font-bold uppercase text-[10px] tracking-widest">Cerrar</button>
+        </div>
+    </div>
 
     <script>
-        const MI_TELEFONO = "5491162530988"; 
+        const WHATSAPP = "5491162530988";
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+        function check() { document.getElementById('btn').disabled = !document.getElementById('acepto').checked; }
 
-        function toggleButton() {
-            document.getElementById('btn_enviar').disabled = !document.getElementById('acepto_terminos').checked;
-        }
+        function enviar() {
+            const d = {
+                n: document.getElementById('nombre').value,
+                dni: document.getElementById('dni').value,
+                u: document.getElementById('unidad').value || 'S/D',
+                dep: document.getElementById('depto').value || 'S/D',
+                j_n: document.getElementById('juzgado_n').value || 'S/D',
+                f_d: document.getElementById('fecha_detencion').value || 'No indicada',
+                c_t: document.getElementById('condena_total').value || 'No indicada',
+                o: document.getElementById('obs').value,
+                s: document.querySelector('input[name="servicio"]:checked').value
+            };
 
-        function enviarWhatsApp() {
-            const campos = ['nombre', 'dni', 'unidad', 'departamento', 'juzgado', 'causa', 'beneficio', 'fecha_detencion', 'condena', 'obs'];
-            const d = {};
-            campos.forEach(c => d[c] = document.getElementById(c)?.value || 'No informado');
+            if(!d.n || !d.dni || !d.dep) return alert("Por favor complete Nombre, DNI y Depto. Judicial.");
 
-            if (d.nombre === 'No informado' || d.dni === 'No informado') {
-                alert("Por favor complete los datos básicos.");
-                return;
-            }
+            const msg = `*⚖️ GESTIÓN JURÍDICA - DEFENSA PENAL 24/7*
 
-            const mensaje = `*⚖️ SOLICITUD DE GESTIÓN - DEFENSA PENAL 24/7*
+*DATOS PPL:*
+- Nombre: ${d.n.toUpperCase()}
+- DNI: ${d.dni}
+- Unidad: ${d.u}
 
-*SERVICIO:* ${d.beneficio.toUpperCase()}
+*JURISDICCIÓN:*
+- Depto Judicial: ${d.dep}
+- Juzgado N°: ${d.j_n}
 
-*INTERNO:* ${d.nombre.toUpperCase()}
-*DNI:* ${d.dni}
-*UNIDAD:* ${d.unidad}
-*CAUSA:* ${d.causa}
-*JUZGADO:* ${d.juzgado} (${d.departamento})
+*TIEMPOS DE CONDENA:*
+- Fecha Detención: ${d.f_d}
+- Condena Total: ${d.c_t}
 
-*NOTA:* Solicito presupuesto para la confección del trámite indicado. Acepto los términos del servicio.
+*TRÁMITE:* ${d.s.toUpperCase()}
+*OBS:* ${d.o || 'Sin observaciones.'}
 
 ---------------------------------
-_Enviado desde DefensaPenal 24/7_`;
+*CONFIRMACIÓN:* Se solicita la redacción del escrito y su notificación al Juzgado/Defensoría. Se acepta costo de gestión de $10.000.`;
 
-            window.open(`https://wa.me/${MI_TELEFONO}?text=${encodeURIComponent(mensaje)}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
